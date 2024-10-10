@@ -1,0 +1,32 @@
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 5px solid #8e2929;
+}
+
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 3px solid #25137e;
+}
+
+
+
+.bg-light-gray {
+    background-color: lightgray; /* Çift satırlar için arka plan rengi */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.text-clickable {
+    cursor: pointer;
+  }

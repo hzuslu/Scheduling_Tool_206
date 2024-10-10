@@ -1,0 +1,40 @@
+.example-container {
+	padding: 10px;
+	gap: 5px;
+	display: flex;
+}
+
+.mat-form-field {
+	width: 100%;
+}
+
+.mat-label {
+	color: #333;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+input.mat-input {
+	width: 100px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+}
+
+.container {
+	padding-top: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-container1 {
+	display: flex;
+}
+
+.button-container2 {
+	display: flex;
+	gap: 30px;
+
+}

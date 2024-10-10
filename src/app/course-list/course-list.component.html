@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mt-5">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h1 class="card-title" style="font-size: 38px;">All Courses</h1>
+                    <a [routerLink]="['/add-course']" class="btn btn-primary mt-3" style="font-size: 14px;">Add
+                        Course</a>
+                </div>
+                <ul class="list-group">
+                    <ng-container *ngFor="let item of courseList">
+                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                            (click)="onSelect(item)" [class.active]="item === selectedCourse">
+                            <a [routerLink]="['/course', item.code]" routerLinkActive="router-link-active"
+                                class="nav-link">
+                                <span class="badge bg-success">{{ item.code }}</span>
+                                <span style="margin-left: 25px;">{{ item.name }}</span>
+                            </a>
+                            <a [routerLink]="['/course', item.code]">
+                                <button type="button" class="btn btn-outline-success">Details
+                                    <i class="bi bi-arrow-right"></i> </button>
+                            </a>
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>

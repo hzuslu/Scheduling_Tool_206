@@ -1,0 +1,180 @@
+<div class="col-12 text-center" style="margin-top: 30px;">
+	<h1>Course Schedule Table</h1>
+</div>
+
+<div class="col-md-6" style="width: 100px; margin-left: 350px;">
+	<select class="form-control" [(ngModel)]="selectedOption" name="selectedOption"
+		(ngModelChange)="changeOption(selectedOption)">
+		<option value="1">I. Yıl</option>
+		<option value="2">II. Yıl</option>
+		<option value="3">III. Yıl</option>
+		<option value="4">IV. Yıl</option>
+	</select>
+</div>
+
+<div class="container" style="margin-top: 30px;">
+
+	<div class="table-responsive" *ngIf="selectedOption == 1">
+		<table class="table table-bordered text-center">
+			<thead>
+				<tr class="bg-light-gray">
+					<th class="text-uppercase">Time</th>
+					<ng-container *ngFor="let item of daysOfWeek">
+						<th class="text-uppercase">{{item}}</th>
+					</ng-container>
+				</tr>
+			</thead>
+			<tbody>
+				<ng-container *ngFor="let hour of hours">
+					<tr>
+						<td class="align-middle">{{ hour }}</td>
+						<ng-container *ngFor="let i of [0, 1, 2, 3, 4]">
+							<td [ngClass]="{ 'text-clickable': firstYear[i * 8 + hours.indexOf(hour)].course.code !== '' }"
+								(click)="firstYear[i * 8 + hours.indexOf(hour)].course.code !== '' ? openDetailDialog(firstYear[i * 8 + hours.indexOf(hour)].course.code, firstYear[i * 8 + hours.indexOf(hour)].classroom.name) : null">
+								{{ firstYear[i * 8 + hours.indexOf(hour)].course.code }} - {{ firstYear[i * 8 +
+								hours.indexOf(hour)].classroom.name }}
+							</td>
+						</ng-container>
+					</tr>
+				</ng-container>
+			</tbody>
+
+		</table>
+	</div>
+
+	<div class="table-responsive" *ngIf="selectedOption == 2">
+		<table class="table table-bordered text-center">
+			<thead>
+				<tr class="bg-light-gray">
+					<th class="text-uppercase">Time</th>
+					<ng-container *ngFor="let item of daysOfWeek">
+						<th class="text-uppercase">{{item}}</th>
+					</ng-container>
+				</tr>
+			</thead>
+			<tbody>
+				<ng-container *ngFor="let hour of hours">
+					<tr>
+						<td class="align-middle">{{ hour }}</td>
+						<ng-container *ngFor="let i of [0, 1, 2, 3, 4]">
+							<td [ngClass]="{ 'text-clickable': secondYear[i * 8 + hours.indexOf(hour)].course.code !== '' }"
+								(click)="secondYear[i * 8 + hours.indexOf(hour)].course.code !== '' ? openDetailDialog(secondYear[i * 8 + hours.indexOf(hour)].course.code, secondYear[i * 8 + hours.indexOf(hour)].classroom.name) : null">
+								{{ secondYear[i * 8 + hours.indexOf(hour)].course.code }} - {{ secondYear[i * 8 +
+								hours.indexOf(hour)].classroom.name }}
+							</td>
+						</ng-container>
+					</tr>
+				</ng-container>
+			</tbody>
+
+		</table>
+	</div>
+
+	<div class="table-responsive" *ngIf="selectedOption == 3">
+		<table class="table table-bordered text-center">
+			<thead>
+				<tr class="bg-light-gray">
+					<th class="text-uppercase">Time</th>
+					<ng-container *ngFor="let item of daysOfWeek">
+						<th class="text-uppercase">{{item}}</th>
+					</ng-container>
+				</tr>
+			</thead>
+			<tbody>
+				<ng-container *ngFor="let hour of hours">
+					<tr>
+						<td class="align-middle">{{ hour }}</td>
+						<ng-container *ngFor="let i of [0, 1, 2, 3, 4]">
+							<td [ngClass]="{ 'text-clickable': thirdYear[i * 8 + hours.indexOf(hour)].course.code !== '' }"
+								(click)="thirdYear[i * 8 + hours.indexOf(hour)].course.code !== '' ? openDetailDialog(thirdYear[i * 8 + hours.indexOf(hour)].course.code, thirdYear[i * 8 + hours.indexOf(hour)].classroom.name) : null">
+								{{ thirdYear[i * 8 + hours.indexOf(hour)].course.code }} - {{ thirdYear[i * 8 +
+								hours.indexOf(hour)].classroom.name }}
+							</td>
+						</ng-container>
+					</tr>
+				</ng-container>
+			</tbody>
+
+		</table>
+	</div>
+
+	<div class="table-responsive" *ngIf="selectedOption == 4">
+		<table class="table table-bordered text-center">
+			<thead>
+				<tr class="bg-light-gray">
+					<th class="text-uppercase">Time</th>
+					<ng-container *ngFor="let item of daysOfWeek">
+						<th class="text-uppercase">{{item}}</th>
+					</ng-container>
+				</tr>
+			</thead>
+			<tbody>
+				<ng-container *ngFor="let hour of hours">
+					<tr>
+						<td class="align-middle">{{ hour }}</td>
+						<ng-container *ngFor="let i of [0, 1, 2, 3, 4]">
+							<td [ngClass]="{ 'text-clickable': fourthYear[i * 8 + hours.indexOf(hour)].course.code !== '' }"
+								(click)="fourthYear[i * 8 + hours.indexOf(hour)].course.code !== '' ? openDetailDialog(fourthYear[i * 8 + hours.indexOf(hour)].course.code, fourthYear[i * 8 + hours.indexOf(hour)].classroom.name) : null">
+								{{ fourthYear[i * 8 + hours.indexOf(hour)].course.code }} - {{ fourthYear[i * 8 +
+								hours.indexOf(hour)].classroom.name }}
+							</td>
+						</ng-container>
+					</tr>
+				</ng-container>
+			</tbody>
+
+		</table>
+	</div>
+
+</div>
+
+
+<div class="container" style="margin-top: 30px;">
+	<div class="row">
+		<div class="col-md-6">
+			<span class="badge badge-pill badge-primary" style="margin-left: 20px;">Add Course Manually</span>
+			<form #courseForm="ngForm">
+				<div class="form-group" style="margin-top: 15px;">
+					<select class="form-control" id="courseName" name="courseName" [(ngModel)]="selectedCourse">
+						<option value="">Select Course Name</option>
+						<option *ngFor="let item of allCourses" [value]="item.code">{{item.name}}</option>
+					</select>
+				</div>
+
+				<div class="form-group" style="margin-top: 15px;">
+					<select class="form-control" id="day" name="day" [(ngModel)]="selectedDay">
+						<option value="">Select Day</option>
+						<ng-container *ngFor="let day of daysOfWeek">
+							<option [value]="day">{{ day }}</option>
+						</ng-container>
+					</select>
+				</div>
+				<div class="form-group" style="margin-top: 15px;">
+					<select class="form-control" id="hour" name="hour" [(ngModel)]="selectedHour">
+						<option value="">Select Hour</option>
+						<ng-container *ngFor="let hour of hours">
+							<option [value]="hour">{{ hour }}</option>
+						</ng-container>
+					</select>
+				</div>
+
+				<div class="form-group" style="margin-top: 15px;">
+					<select class="form-control" id="class" name="class" [(ngModel)]="selectedClass">
+						<option value="">Select Class</option>
+						<ng-container *ngFor="let class of allClassrooms">
+							<option [value]="class.name">{{ class.name }}</option>
+						</ng-container>
+					</select>
+				</div>
+
+				<button type="submit" class="btn btn-success" style="margin-top: 15px;" (click)="addCourse();">Add
+					Course</button>
+			</form>
+		</div>
+		<div class="col-md-6 d-flex align-items-center justify-content-center">
+			<div class="btn-group-vertical" role="group">
+				<button type="button" class="btn btn-success mb-4" (click)="deneme()">Make Automatic Schedule</button>
+			</div>
+		</div>
+	</div>
+</div>

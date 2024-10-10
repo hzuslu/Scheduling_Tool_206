@@ -1,0 +1,31 @@
+<div class="container-xl mt-5 col-sm-10">
+	<div class="table-responsive">
+		<div class="table-wrapper">
+			<div class="table-title">
+				<div class="row">
+					<div class="col-sm-6">
+						<h2>Busy <b>List</b></h2>
+					</div>
+				</div>
+			</div>
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Instructor Name</th>
+						<th>Busy Day</th>
+						<th>Busy Hours</th>
+					</tr>
+				</thead>
+				<tbody *ngFor="let item of allInstructors">
+					<tr *ngFor="let busyTime of item.busyTimes">
+						<td></td>
+						<td>{{item.name}}</td>
+						<td>{{busyTime.day}}</td>
+						<td>{{busyTime.time}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

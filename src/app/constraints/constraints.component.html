@@ -1,0 +1,97 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2 class="card-title text-white mb-4">Add Classroom</h2>
+                    <form #addClassroomForm="ngForm">
+                        <div class="form-group">
+                            <label for="addName" class="text-white"></label>
+                            <input type="text" class="form-control" id="addClassroomName" name="addClassroomName"
+                                placeholder="Enter new classroom name" [(ngModel)]="addClassroomName">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="addCapacity" class="text-white"></label>
+                            <input type="text" class="form-control" id="addClassroomCapacity"
+                                name="addClassroomCapacity" placeholder="Enter new classroom capacity"
+                                [(ngModel)]="addClassroomCapacity">
+                        </div>
+                        <button type="submit" class="btn btn-success mt-3"
+                            (click)="addClassroom(); addClassroomForm.resetForm() ;capacity.value=''; ">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2 class="card-title text-white mb-4">Update Classroom</h2>
+                    <form #updateClassroomForm="ngForm">
+                        <div class="form-group">
+                            <label for="instructorSelect" class="text-white"></label>
+                            <select class="form-control" [(ngModel)]="selectedClassroom" name="selectedClassroom">
+                                <option *ngFor="let item of classroomList;" [ngValue]="item">{{item.name}} - Capacity :
+                                    {{ item.capacity}}</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="hoursInput" class="text-white"></label>
+                            <input type="text" class="form-control" id="hoursInput" placeholder="Enter new capacity"
+                                #capacity>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3"
+                            (click)="updateClassroomCapacity(+capacity.value); updateClassroomForm.resetForm() ;capacity.value=''; ">Update</button>
+                        <button type="submit" class="btn btn-danger mt-3" style="margin-left: 10px;"
+                            (click)="deleteClassroom(); updateClassroomForm.resetForm() ;capacity.value=''; ">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2 class="card-title text-white mb-4">Update Service</h2>
+                    <form #updateServiceForm="ngForm" (ngSubmit)="updateService()">
+                        <div class="form-group">
+                            <label for="instructorSelect" class="text-white">Select Service</label>
+                            <select class="form-control" [(ngModel)]="selectedService" name="selectedService"
+                                (change)="uptadeConstraintsValues()">
+                                <option *ngFor="let item of serviceList;" [ngValue]="item">
+                                    {{item.courseCode}} - Day: {{ item.day }} - Timings: {{ item.timings }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-top: 15px;">
+                            <label for="courseName" class="text-white">Select Course Day</label>
+                            <select class="form-control" id="courseName" name="courseName" [(ngModel)]="tempDay2">
+                                <option *ngFor="let item of daysOfWeek" [value]="item">{{item}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-top: 15px;">
+                            <label for="hoursInput" class="text-white">Enter New Timings</label>
+                            <input type="text" class="form-control" id="hoursInput" name="hoursInput"
+                                [(ngModel)]="tempTimings2" placeholder="Enter new timings (AA:BB, CC:DD, ...)" #timings>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Update</button>
+                        <button type="button" class="btn btn-danger mt-3" style="margin-left: 10px;"
+                            (click)="deleteService(); updateServiceForm.resetForm()">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

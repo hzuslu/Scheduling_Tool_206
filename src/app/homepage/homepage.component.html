@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12 text-center" style="margin-top: 100px;">
+			<h1>Welcome to Course Scheduler!</h1>
+		</div>
+	</div>
+
+	<div class="file-card">
+		<div class="mb-3 text-center">
+			<label for="courses" class="form-label">Courses.csv</label>
+			<input class="form-control file-input" type="file" id="courses" (change)="handleCourseFileInput($event)">
+		</div>
+		<div class="mb-3 text-center">
+			<label for="classroom" class="form-label">Classroom.csv</label>
+			<input class="form-control file-input" type="file" id="classroom"
+				(change)="handleClassroomFileInput($event)">
+		</div>
+		<div class="mb-3 text-center">
+			<label for="busy" class="form-label">Busy.csv</label>
+			<input class="form-control file-input" type="file" id="busy" (change)="handleBusyFileInput($event)">
+		</div>
+		<div class="mb-3 text-center">
+			<label for="service" class="form-label">Service.csv</label>
+			<input class="form-control file-input" type="file" id="service" (change)="handleServiceFileInput($event)">
+		</div>
+	</div>
+
+	<div class="text-center" style="margin-top: 30px;">
+		<a class="btn btn-success btn-lg active" role="button" aria-pressed="true"
+			routerLink="/schedule">Continue</a>
+	</div>
+
+</div>
